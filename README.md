@@ -2,7 +2,11 @@
 
 ![App Screens](doc/img/1.png)
 
-### MedMindApp is a React Native mobile application that provides users with collections of movies. The app follows the MVC (Model-View-Controller) code pattern to ensure a well-organized and maintainable codebase.
+### moviepal is a React Native mobile application that provides users with collections of movies. The app follows the MVC (Model-View-Controller) code pattern to ensure a well-organized and maintainable codebase.
+
+## Android download link
+
+Download: https://drive.google.com/file/d/1GKHq0gQLelAJGzGb95qbfnRe_gK--qne/view?usp=sharing
 
 ## Features
 
