@@ -51,7 +51,6 @@ const Home: FunctionComponent<GeneralScreenProps<'HOME'>> = ({navigation}) => {
     data: moviesData,
     isFetching,
     isError,
-    error,
   } = useGetAllMoviesApiQuery(
     {page, search: debouncedValue || randomTerm},
     {
@@ -66,8 +65,6 @@ const Home: FunctionComponent<GeneralScreenProps<'HOME'>> = ({navigation}) => {
       }),
     },
   );
-
-  console.log(error);
 
   const colors = useColors();
 
@@ -125,7 +122,7 @@ const Home: FunctionComponent<GeneralScreenProps<'HOME'>> = ({navigation}) => {
                 navigation.navigate(routesNames.DETAIL, {imdbID: item.imdbID})
               }
               poster={
-                item.Poster && item.Poster !== 'N/A' ? item.Poster : undefined
+                item.Poster || item.Poster !== 'N/A' ? item.Poster : undefined
               }
               title={item.Title}
               year={item.Year}

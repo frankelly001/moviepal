@@ -27,7 +27,7 @@ const MovieDetail: FunctionComponent<GeneralScreenProps<'DETAIL'>> = ({
     imdbID: route.params.imdbID,
   });
   const uri =
-    movieDetail?.Poster && movieDetail?.Poster !== 'N/A'
+    movieDetail?.Poster || movieDetail?.Poster !== 'N/A'
       ? movieDetail?.Poster
       : undefined;
 
