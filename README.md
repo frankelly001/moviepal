@@ -78,13 +78,13 @@ $ react-native run-ios
 - Launch the MedMindApp on your mobile device or emulator, it presents you list of movies at random, you can also search and check the selected movie detail
 
 <p float="left">
-<img src="doc/img/1.png" width="360" height="800">
-<img src="doc/img/2.png" width="360" height="800">
-<img src="doc/img/3.png" width="360" height="800">
-<img src="doc/img/4.png" width="360" height="800">
-<img src="doc/img/5.png" width="360" height="800">
-<img src="doc/img/6.png" width="360" height="800">
-<img src="doc/img/7.png" width="360" height="800">
+<img src="doc/img/1.png" width="375" height="812">
+<img src="doc/img/2.png" width="375" height="812">
+<img src="doc/img/3.png" width="375" height="812">
+<img src="doc/img/4.png" width="375" height="812">
+<img src="doc/img/5.png" width="375" height="812">
+<img src="doc/img/6.png" width="375" height="812">
+<img src="doc/img/7.png" width="375" height="812">
 </p>
 
 <br />
