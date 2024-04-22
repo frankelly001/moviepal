@@ -3,6 +3,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
   BOTTOM_TAB: undefined;
+  DETAIL: {imdbID: string};
 };
 
 export type RootStackNavigationProps<T extends keyof RootStackParamList> =

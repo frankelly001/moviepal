@@ -3,4 +3,5 @@ export enum routesNames {
   SEARCH = 'SEARCH',
   WATCH_LIST = 'WATCH_LIST',
   BOTTOM_TAB = 'BOTTOM_TAB',
+  DETAIL = 'DETAIL',
 }

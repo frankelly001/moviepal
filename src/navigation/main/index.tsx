@@ -7,6 +7,7 @@ import {routesNames} from '../routes';
 import {navigationTheme} from './theme';
 import {RootStackParamList} from './types';
 import {useColors} from '../../hooks/use-colors/useColors';
+import {MovieDetail} from '../../screens/stack-screen';
 
 const {Navigator, Screen} = createNativeStackNavigator<RootStackParamList>();
 
@@ -19,6 +20,11 @@ const MainNavigation = () => {
         <Screen
           name={routesNames.BOTTOM_TAB}
           component={BottomTab}
+          options={{}}
+        />
+        <Screen
+          name={routesNames.DETAIL}
+          component={MovieDetail}
           options={{}}
         />
       </Navigator>
