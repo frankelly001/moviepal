@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {appScreenStyles} from './styles';
 import {COLOR_KEYS} from '../../../resources/colors';
-import {useColorMode, useColors} from '../../../hooks/use-colors/useColors';
+import {useColorMode, useColors} from '../../../hooks';
 import {isIOS} from '../../../resources/config';
 
 const AppScreen: FunctionComponent<

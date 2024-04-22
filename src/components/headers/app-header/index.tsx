@@ -3,7 +3,7 @@ import {Pressable, View} from 'react-native';
 import {appHeaderStyle} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {AppHeaderProps} from './type';
-import {useColors} from '../../../hooks/use-colors/useColors';
+import {useColors} from '../../../hooks';
 import {detectTouch} from '../../../resources/config';
 import {AppText} from '../../common';
 

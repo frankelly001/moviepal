@@ -6,7 +6,7 @@ import {navigationRef} from '../root';
 import {routesNames} from '../routes';
 import {navigationTheme} from './theme';
 import {RootStackParamList} from './types';
-import {useColors} from '../../hooks/use-colors/useColors';
+import {useColors} from '../../hooks';
 import {MovieDetail} from '../../screens/stack-screen';
 
 const {Navigator, Screen} = createNativeStackNavigator<RootStackParamList>();

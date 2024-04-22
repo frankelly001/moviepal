@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {COLOR_DEFINITIONS} from '../../../resources/colors';
 import {typography} from '../../../resources/fonts';
+import {wp} from '../../../resources/config';
 
 export const appInputStyles = ({
   colors,
@@ -19,15 +20,15 @@ export const appInputStyles = ({
       borderWidth: isFocus ? 1.5 : 1,
       borderColor: colors?.[isFocus ? 'highlight_5' : 'neutral_light_5'],
       flexDirection: 'row',
-      borderRadius: 12,
+      borderRadius: wp(12),
       alignItems: 'center',
-      marginTop: 8,
-      height: 48,
+      marginTop: wp(8),
+      height: wp(48),
       opacity: isDisabled ? 0.5 : 1,
     },
     inputView: {
       flex: 1,
-      paddingHorizontal: 16,
+      paddingHorizontal: wp(16),
     },
     inputField: {
       paddingVertical: 0,
@@ -37,5 +38,5 @@ export const appInputStyles = ({
       textDecorationLine: 'none',
       ...typography.body_s,
     },
-    iconContainer: {paddingHorizontal: 15},
+    iconContainer: {paddingHorizontal: wp(15)},
   });

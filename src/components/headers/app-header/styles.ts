@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {COLOR_DEFINITIONS} from '../../../resources/colors';
+import {wp} from '../../../resources/config';
 
 export const appHeaderStyle = ({colors}: {colors?: COLOR_DEFINITIONS} = {}) =>
   StyleSheet.create({
@@ -9,12 +10,12 @@ export const appHeaderStyle = ({colors}: {colors?: COLOR_DEFINITIONS} = {}) =>
       justifyContent: 'space-between',
       backgroundColor: colors?.neutral_light_1,
       alignItems: 'center',
-      paddingLeft: 20,
-      paddingRight: 24,
+      paddingLeft: wp(20),
+      paddingRight: wp(24),
       borderTopWidth: 0,
       borderBottomWidth: 0,
       overflow: 'hidden',
-      height: 50,
+      height: wp(50),
     },
     left: {
       flex: 1,

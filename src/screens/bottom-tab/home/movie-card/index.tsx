@@ -3,6 +3,7 @@ import {Image, TouchableOpacity, View} from 'react-native';
 import {AppText} from '../../../../components/common';
 import {movieCardStyles} from './styles';
 import {MovieCardProps} from './types';
+import {useColors} from '../../../../hooks';
 
 const MovieCard: FunctionComponent<MovieCardProps> = ({
   onPress,
@@ -10,7 +11,8 @@ const MovieCard: FunctionComponent<MovieCardProps> = ({
   title,
   year,
 }) => {
-  const styles = movieCardStyles;
+  const colors = useColors();
+  const styles = movieCardStyles({colors});
   return (
     <TouchableOpacity
       activeOpacity={0.5}
@@ -20,6 +22,7 @@ const MovieCard: FunctionComponent<MovieCardProps> = ({
         <Image
           source={{
             uri: poster,
+            cache: 'force-cache',
           }}
           style={styles.img}
         />

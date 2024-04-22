@@ -8,6 +8,11 @@ import StarIcon from './star.svg';
 import CalendarIcon from './calendar.svg';
 import TicketIcon from './ticket.svg';
 import ClockIcon from './clock.svg';
+import LightMoonIcon from './light_moon.svg';
+import DarkMoonIcon from './dark_moon.svg';
+import CustomMoonIcon from './custom_moon.svg';
+import CheckIcon from './check.svg';
+import CloseIcon from './close.svg';
 
 export {
   HomeIcon,
@@ -20,4 +25,9 @@ export {
   CalendarIcon,
   TicketIcon,
   ClockIcon,
+  LightMoonIcon,
+  DarkMoonIcon,
+  CustomMoonIcon,
+  CheckIcon,
+  CloseIcon,
 };

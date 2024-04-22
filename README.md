@@ -1,79 +1,93 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# # moviepal - Mobile Application for Movies
 
-# Getting Started
+![App Screens](doc/img/1.png)
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+### MedMindApp is a React Native mobile application that provides users with collections of movies. The app follows the MVC (Model-View-Controller) code pattern to ensure a well-organized and maintainable codebase.
 
-## Step 1: Start the Metro Server
+## Features
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- Movies List: Showcases a diverse array of movie genres presented randomly to the user.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- Search Feature: Offers a robust search functionality, enabling users to effortlessly find movies by title, genre, or actor.
 
-```bash
-# using npm
-npm start
+- Color Mode: Provides users with the flexibility to choose between light, dark, or the system's default theme, enhancing visual comfort and personalization.
 
-# OR using Yarn
-yarn start
+- User-Friendly Interface: Designed with simplicity and ease of use in mind, ensuring a seamless and intuitive movie searching experience.
+
+- MVC Architecture: The app is structured following the MVC (Model-View-Controller) pattern, promoting separation of concerns and maintainability.
+
+## Tech Used
+
+- React Native
+- Redux
+
+## How to build
+
+Default branch:
+
+```
+$ master
 ```
 
-## Step 2: Start your Application
+Clone this repo to your machine:
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```
+$ git clone https://github.com/frankelly001/moviepal.git
 ```
 
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+```
+$ cd moviepal
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+Install dependencies:
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+```
+$ yarn install
+```
 
-## Step 3: Modifying your App
+If you are running app on iOS:
 
-Now that you have successfully run the app, let's modify it.
+```
+$ cd ios
+```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+```
+$ pod install
+```
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+Return to the project main directory:
 
-## Congratulations! :tada:
+```
+$ cd ..
+```
 
-You've successfully run and modified your React Native App. :partying_face:
+To run on android:
 
-### Now what?
+```
+$ react-native run-android
+```
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+To run on iOS:
 
-# Troubleshooting
+```
+$ react-native run-ios
+```
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## Usage
 
-# Learn More
+- Launch the MedMindApp on your mobile device or emulator, it presents you list of movies at random, you can also search and check the selected movie detail
 
-To learn more about React Native, take a look at the following resources:
+<p float="left">
+<img src="doc/img/1.png" width="360" height="800">
+<img src="doc/img/2.png" width="360" height="800">
+<img src="doc/img/3.png" width="360" height="800">
+<img src="doc/img/4.png" width="360" height="800">
+<img src="doc/img/5.png" width="360" height="800">
+<img src="doc/img/6.png" width="360" height="800">
+<img src="doc/img/7.png" width="360" height="800">
+</p>
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+<br />
+
+Built by @Frankelly
+Email: Frankelly344@gmail.com

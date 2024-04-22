@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {COLOR_DEFINITIONS, COLOR_KEYS} from '../../../resources/colors';
+import {wp} from '../../../resources/config';
 
 export const appBtnStyles = ({
   colors,
@@ -18,13 +19,13 @@ export const appBtnStyles = ({
 } = {}) =>
   StyleSheet.create({
     container: {
-      paddingHorizontal: 16,
-      paddingVertical: 12,
+      paddingHorizontal: wp(16),
+      paddingVertical: wp(12),
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'row',
       width: '100%',
-      height: 48,
+      height: wp(48),
       opacity: disabled ? 0.5 : 1,
       backgroundColor: colors?.[buttonColor],
       borderRadius,

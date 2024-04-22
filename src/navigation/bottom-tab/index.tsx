@@ -1,13 +1,23 @@
 /* eslint-disable react/no-unstable-nested-components */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import React from 'react';
-import {useColors} from '../../hooks/use-colors/useColors';
+import React, {FunctionComponent} from 'react';
+import {useColorMode, useColors} from '../../hooks';
 import {typography} from '../../resources/fonts';
 import {routesNames} from '../routes';
-import {View} from 'react-native';
+import {Pressable, View} from 'react-native';
 import {BottomTabParamList} from './type';
-import {HomeIcon, SaveIcon, SearchIcon} from '../../assets/svg';
+import {
+  CustomMoonIcon,
+  DarkMoonIcon,
+  HomeIcon,
+  LightMoonIcon,
+  SaveIcon,
+} from '../../assets/svg';
 import {Home} from '../../screens/bottom-tab';
+import {bottomTabStyles} from './styles';
+import AppearanceSheet from './appearance-sheet';
+import {useSheet} from '../../hooks';
+import {light_mode_colors} from '../../resources/colors';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -44,8 +54,7 @@ const BottomTab = () => {
           name={routesNames.SEARCH}
           component={View}
           options={{
-            title: 'Search',
-            tabBarIcon: ({color}) => <SearchIcon stroke={color} />,
+            tabBarButton: () => <ColorModeButton />,
           }}
         />
         <Tab.Screen
@@ -62,3 +71,26 @@ const BottomTab = () => {
 };
 
 export default BottomTab;
+
+const ColorModeButton: FunctionComponent = () => {
+  const colors = useColors();
+  const styles = bottomTabStyles({colors});
+  const {sheetRef, openSheet, closeSheet} = useSheet();
+  const {mode} = useColorMode();
+  const modeBtns = {
+    light: <LightMoonIcon fill={light_mode_colors.neutral_light_2} />,
+    dark: <DarkMoonIcon fill={light_mode_colors.neutral_light_2} />,
+    custom: <CustomMoonIcon fill={light_mode_colors.neutral_light_2} />,
+  };
+
+  const Icon = modeBtns[mode];
+
+  return (
+    <>
+      <Pressable onPress={openSheet} style={styles.tabBtnContainer}>
+        <View style={styles.createTabBtn}>{Icon}</View>
+      </Pressable>
+      <AppearanceSheet sheetRef={sheetRef} closeSheet={closeSheet} />
+    </>
+  );
+};

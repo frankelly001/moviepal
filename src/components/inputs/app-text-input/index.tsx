@@ -3,7 +3,7 @@ import {View, TextInput, TouchableOpacity} from 'react-native';
 import {appInputStyles} from './styles';
 import {AppTextInputProps} from './type';
 import {EyeIcon, EyeSlashIcon} from '../../../assets/svg';
-import {useColors} from '../../../hooks/use-colors/useColors';
+import {useColors} from '../../../hooks';
 import {AppText} from '../../common';
 import {detectTouch} from '../../../resources/config';
 
@@ -43,13 +43,13 @@ const AppTextInput: FunctionComponent<AppTextInputProps> = ({
         <AppText text={label} type="heading_h5" textTransform="capitalize" />
       )}
       <View style={[styles.inputContainer, inputContainerStyle]}>
-        {RightSuffixIcon && (
+        {LeftSuffixIcon && (
           <TouchableOpacity
             hitSlop={detectTouch}
             onPress={leftIconOnPress}
             disabled={!enableLeftIconOnPress}
             style={styles.iconContainer}>
-            {RightSuffixIcon}
+            {LeftSuffixIcon}
           </TouchableOpacity>
         )}
         <View style={[styles.inputView]}>
@@ -70,7 +70,7 @@ const AppTextInput: FunctionComponent<AppTextInputProps> = ({
           />
         </View>
 
-        {(isPasswordText || LeftSuffixIcon) && (
+        {(isPasswordText || RightSuffixIcon) && (
           <TouchableOpacity
             hitSlop={detectTouch}
             disabled={isPasswordText ? false : !enableRightIconOnPress}
@@ -87,7 +87,7 @@ const AppTextInput: FunctionComponent<AppTextInputProps> = ({
                 )}
               </>
             ) : (
-              <>{LeftSuffixIcon}</>
+              <>{RightSuffixIcon}</>
             )}
           </TouchableOpacity>
         )}

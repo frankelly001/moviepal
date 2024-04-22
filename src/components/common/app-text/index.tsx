@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {Text} from 'react-native';
 import {textAlignStyles} from './styles';
 import {AppTextProps} from './type';
-import {useColors} from '../../../hooks/use-colors/useColors';
+import {useColors} from '../../../hooks';
 import {typography} from '../../../resources/fonts';
 
 const AppText: FunctionComponent<AppTextProps> = ({

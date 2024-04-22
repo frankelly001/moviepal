@@ -3,7 +3,7 @@ import {TouchableOpacity} from 'react-native';
 import {appBtnStyles} from './styles';
 import {appButtonProps} from './type';
 import {ActivityIndicator} from 'react-native';
-import {useColors} from '../../../hooks/use-colors/useColors';
+import {useColors} from '../../../hooks';
 import {AppText} from '../../common';
 
 const AppButton: FunctionComponent<appButtonProps> = ({

@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {Fragment, FunctionComponent, useState} from 'react';
 import {Image, Pressable, View} from 'react-native';
 import {
@@ -12,9 +11,12 @@ import {
 import {AppText} from '../../../components/common';
 import {AppScreen} from '../../../components/containers';
 import {AppHeader} from '../../../components/headers';
-import {useColors} from '../../../hooks/use-colors/useColors';
+import {useColors} from '../../../hooks';
 import {GeneralScreenProps} from '../../../navigation/types';
 import {useGetMovieDetailApiQuery} from '../../../state/services/movies/api';
+import {detailStyles, otherDetailsStyles} from './styles';
+import {OtherDetailsProps} from './types';
+import {AppVectorIcons, Icon} from '../../../components/icons';
 
 const MovieDetail: FunctionComponent<GeneralScreenProps<'DETAIL'>> = ({
   route,
@@ -28,9 +30,10 @@ const MovieDetail: FunctionComponent<GeneralScreenProps<'DETAIL'>> = ({
     movieDetail?.Poster && movieDetail?.Poster !== 'N/A'
       ? movieDetail?.Poster
       : undefined;
+
+  const styles = detailStyles({colors});
   return (
     <AppScreen
-      // isScrollable={false}
       ScreenHeader={
         <AppHeader
           LeftContent={
@@ -42,43 +45,21 @@ const MovieDetail: FunctionComponent<GeneralScreenProps<'DETAIL'>> = ({
           }
           middleTitle="Detail"
           RightContent={
-            <SaveIcon width={28} height={28} fill={colors.neutral_dark_1} />
+            <SaveIcon width={28} height={28} stroke={colors.neutral_dark_1} />
           }
         />
       }>
-      <View style={{marginBottom: 60}}>
-        <View style={{height: 210}}>
+      <View style={styles.posterContainer}>
+        <View style={styles.posterCover}>
           <Image
             source={{
               uri,
+              cache: 'force-cache',
             }}
-            style={{flex: 1}}
+            style={styles.img}
           />
-          <View
-            style={{
-              position: 'absolute',
-
-              right: 0,
-              top: 10,
-              paddingHorizontal: 8,
-              paddingVertical: 4,
-              flexDirection: 'row',
-              gap: 4,
-              alignItems: 'center',
-            }}>
-            <View
-              style={{
-                borderBottomLeftRadius: 8,
-                borderTopLeftRadius: 8,
-                opacity: 0.5,
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: colors.neutral_dark_4,
-              }}
-            />
+          <View style={styles.rateContainer}>
+            <View style={styles.rateBackGround} />
             <StarIcon strokeWidth={1.2} stroke={colors.support_warning_1} />
             <AppText
               text="4.5"
@@ -89,38 +70,17 @@ const MovieDetail: FunctionComponent<GeneralScreenProps<'DETAIL'>> = ({
           </View>
         </View>
 
-        <View
-          style={{
-            position: 'absolute',
-            flexDirection: 'row',
-            alignItems: 'flex-end',
-            gap: 16,
-            bottom: -60,
-            left: 20,
-            right: 20,
-          }}>
-          <View
-            style={{
-              height: 120,
-              width: 95,
-              // backgroundColor: 'green',
-              borderRadius: 10,
-              overflow: 'hidden',
-            }}>
+        <View style={styles.detailContainer}>
+          <View style={styles.imgPoster}>
             <Image
               source={{
                 uri,
+                cache: 'force-cache',
               }}
-              style={{flex: 1}}
+              style={[styles.img]}
             />
           </View>
-          <View
-            style={{
-              flex: 1,
-              paddingVertical: 4,
-              maxHeight: 120,
-              // backgroundColor: 'black',
-            }}>
+          <View style={styles.titleContainer}>
             <AppText
               text={movieDetail?.Title}
               type="heading_h3"
@@ -129,47 +89,93 @@ const MovieDetail: FunctionComponent<GeneralScreenProps<'DETAIL'>> = ({
           </View>
         </View>
       </View>
-      <View style={{paddingHorizontal: 20, marginTop: 16}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            gap: 8,
-          }}>
+      <View style={styles.contentContainer}>
+        <View style={styles.pillContainer}>
           {[
-            {label: movieDetail?.Year, Icon: CalendarIcon},
-            {label: movieDetail?.Runtime, Icon: ClockIcon},
-            {label: movieDetail?.Genre, Icon: TicketIcon},
-            {label: movieDetail?.Actors, Icon: ClockIcon},
-            {label: movieDetail?.Language, Icon: ClockIcon},
-            {label: movieDetail?.Country, Icon: ClockIcon},
-            {label: movieDetail?.Metascore, Icon: ClockIcon},
-            {label: movieDetail?.imdbVotes, Icon: ClockIcon},
-            {label: movieDetail?.Awards, Icon: ClockIcon, isLast: true},
-          ].map(({label, Icon, isLast}, index) => (
+            {
+              label: movieDetail?.Year,
+              Icon: (
+                <CalendarIcon
+                  width={18}
+                  height={18}
+                  stroke={colors.highlight_5}
+                />
+              ),
+            },
+            {
+              label: movieDetail?.Runtime,
+              Icon: (
+                <ClockIcon width={18} height={18} stroke={colors.highlight_5} />
+              ),
+            },
+            {
+              label: movieDetail?.Genre,
+              Icon: (
+                <TicketIcon
+                  width={18}
+                  height={18}
+                  stroke={colors.highlight_5}
+                />
+              ),
+            },
+            {
+              label: movieDetail?.Language,
+              Icon: (
+                <Icon
+                  IconTag={AppVectorIcons.FontAwesome}
+                  name="language"
+                  size={18}
+                  color={colors.highlight_5}
+                />
+              ),
+            },
+            {
+              label: movieDetail?.Country,
+              Icon: (
+                <ClockIcon width={18} height={18} stroke={colors.highlight_5} />
+              ),
+            },
+            {
+              label: movieDetail?.Metascore,
+              Icon: (
+                <Icon
+                  IconTag={AppVectorIcons.MaterialCommunityIcons}
+                  name="scoreboard-outline"
+                  size={18}
+                  color={colors.highlight_5}
+                />
+              ),
+            },
+            {
+              label: movieDetail?.imdbVotes,
+              Icon: (
+                <Icon
+                  IconTag={AppVectorIcons.MaterialCommunityIcons}
+                  name="vote-outline"
+                  size={18}
+                  color={colors.highlight_5}
+                />
+              ),
+            },
+            {
+              label: movieDetail?.Awards,
+              Icon: (
+                <Icon
+                  IconTag={AppVectorIcons.Feather}
+                  name="award"
+                  size={18}
+                  color={colors.highlight_5}
+                />
+              ),
+              isLast: true,
+            },
+          ].map(({label, Icon: AppIcon, isLast}, index) => (
             <Fragment key={index}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 8,
-                }}>
-                <Icon width={18} height={18} stroke={colors.highlight_5} />
+              <View style={styles.pill}>
+                {AppIcon}
                 <AppText type="body_s" text={label} color="neutral_dark_2" />
               </View>
-              {!isLast && (
-                <View
-                  style={{
-                    height: 15,
-                    width: 1,
-                    backgroundColor: 'white',
-                    // marginHorizontal: 12,
-                  }}
-                />
-              )}
+              {!isLast && <View style={styles.serpaerator} />}
             </Fragment>
           ))}
         </View>
@@ -187,30 +193,25 @@ const MovieDetail: FunctionComponent<GeneralScreenProps<'DETAIL'>> = ({
 
 export default MovieDetail;
 
-const OtherDetails: FunctionComponent<{
-  plot?: string;
-  actors?: string;
-  director?: string;
-  writer?: string;
-  ratings?: {Source: string; Value: string}[];
-}> = ({plot, actors, director, writer, ratings}) => {
+const OtherDetails: FunctionComponent<OtherDetailsProps> = ({
+  plot,
+  actors,
+  director,
+  writer,
+  ratings,
+}) => {
   const colors = useColors();
   const [current, setCurrent] = useState(0);
+  const styles = otherDetailsStyles;
   return (
     <>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginTop: 24,
-          gap: 24,
-        }}>
+      <View style={styles.headerContainer}>
         {['About Movie', 'Ratings', 'Cast'].map((el, i) => (
           <Pressable
+            key={i}
             onPress={() => setCurrent(i)}
             style={{
-              borderBottomWidth: 5,
-              paddingVertical: 10,
+              ...styles.header,
               borderColor:
                 colors?.[current === i ? 'highlight_5' : 'transparent'],
             }}>
@@ -218,17 +219,18 @@ const OtherDetails: FunctionComponent<{
           </Pressable>
         ))}
       </View>
-      <View style={{marginTop: 16}}>
+      <View style={styles.detailConatiner}>
         {current === 0 && <AppText type="body_s" text={plot} />}
         {current === 1 && (
           <>
             {ratings?.map((el, i) => (
-              <View key={i} style={{marginBottom: 10}}>
+              <View key={i} style={styles.detail}>
                 <AppText
                   type="body_s"
                   text={[
                     el.Source,
                     <AppText
+                      key={1}
                       type="body_xs"
                       text={`   (${el.Value})`}
                       color="support_warning_2"
@@ -255,17 +257,13 @@ const OtherDetails: FunctionComponent<{
                 value: writer,
               },
             ].map((el, i) => (
-              <View key={i} style={{marginBottom: 10}}>
+              <View key={i} style={styles.detail}>
                 <AppText
                   type="body_s"
                   color="neutral_dark_2"
                   text={[
                     `${el.label}:`,
-                    <AppText
-                      type="body_s"
-                      text={`   ${el.value}`}
-                      // color="support_warning_2"
-                    />,
+                    <AppText key={1} type="body_s" text={` ${el.value}`} />,
                   ]}
                 />
               </View>

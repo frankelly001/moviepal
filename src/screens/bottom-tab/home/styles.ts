@@ -5,7 +5,6 @@ export const homeStyles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: wp(20),
-    paddingBottom: wp(16),
   },
   headerContainer: {
     paddingHorizontal: wp(20),

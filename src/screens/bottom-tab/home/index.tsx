@@ -13,20 +13,32 @@ import {
   moviesSelector,
   useGetAllMoviesApiQuery,
 } from '../../../state/services/movies/api';
-import {colors} from '../../../resources/colors';
 import useDebounce from '../../../hooks/use-debounce/useDebounce';
+import {SearchIcon} from '../../../assets/svg';
+import {useColors} from '../../../hooks';
+import {wp} from '../../../resources/config';
 
 const searchTerms = [
   'Action',
   'Comedy',
-  'Romance',
-  'Sci-Fi',
-  'Horror',
   'Drama',
+  'Romance',
+  'Horror',
+  'Thriller',
+  'Sci-Fi',
   'Fantasy',
   'Adventure',
-  'Thriller',
+  'Mystery',
+  'Crime',
+  'Animation',
+  'Family',
   'Documentary',
+  'Biography',
+  'History',
+  'War',
+  'Musical',
+  'Sport',
+  'Western',
 ];
 const randomTerm = searchTerms[Math.floor(Math.random() * searchTerms.length)];
 
@@ -39,6 +51,7 @@ const Home: FunctionComponent<GeneralScreenProps<'HOME'>> = ({navigation}) => {
     data: moviesData,
     isFetching,
     isError,
+    error,
   } = useGetAllMoviesApiQuery(
     {page, search: debouncedValue || randomTerm},
     {
@@ -54,6 +67,10 @@ const Home: FunctionComponent<GeneralScreenProps<'HOME'>> = ({navigation}) => {
     },
   );
 
+  console.log(error);
+
+  const colors = useColors();
+
   return (
     <AppScreen
       ScreenHeader={
@@ -63,6 +80,13 @@ const Home: FunctionComponent<GeneralScreenProps<'HOME'>> = ({navigation}) => {
             placeholder="Search..."
             value={searchTerm}
             onChangeText={text => setSearchTerm(text)}
+            RightSuffixIcon={
+              <SearchIcon
+                width={20}
+                height={20}
+                stroke={colors.neutral_light_5}
+              />
+            }
           />
         </View>
       }
@@ -76,17 +100,20 @@ const Home: FunctionComponent<GeneralScreenProps<'HOME'>> = ({navigation}) => {
         contentContainerStyle={styles.gap16}
         columnWrapperStyle={styles.gap16}
         onEndReachedThreshold={1}
-        ListEmptyComponent={
+        ListFooterComponent={
           <>
             {isFetching ? (
-              <ActivityIndicator color={colors.highlight_5} />
+              <ActivityIndicator
+                color={colors.highlight_5}
+                style={{marginBottom: wp(16)}}
+              />
             ) : null}
           </>
         }
         onEndReached={() => {
           const itemsLeft = Number(moviesData?.totalResults ?? 0) - page * 10;
-          if (!isFetching && itemsLeft && !isError) {
-            setPage(prevPage => prevPage + 1);
+          if (!isFetching && itemsLeft) {
+            setPage(prevPage => (!isError ? prevPage + 1 : prevPage));
           }
         }}
         renderItem={({item}) =>
